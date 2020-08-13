@@ -116,4 +116,4 @@ dist
 .pnp.*
 
 # mongo pass
-.mongo_pass.txt
+mongo_pass.txt
