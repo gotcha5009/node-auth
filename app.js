@@ -1,18 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
 // view engine
 app.set('view engine', 'ejs');
 
 // database connection
 const dbURI = 'mongodb+srv://admin:LiWkDpDnoGf8hQSG@cluster0.1qdut.mongodb.net/node-auth?retryWrites=true&w=majority';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
   .then((result) => {
     console.log('server\'s listening on port 3000');
     app.listen(3000);
